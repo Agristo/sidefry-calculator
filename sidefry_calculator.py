@@ -25,8 +25,8 @@ st.markdown(
         </h1>
         <div style='color:{AGRISTO_BLACK}; font-size:1.12em; max-width:660px; margin:auto; margin-bottom:22px;'>
             Use this interactive tool to compare two business scenarios:<br>
-            <b>1. Standard Only</b> – Selling only Super Crispy straight cut fries.<br>
-            <b>2. Standard + SideFry™</b> – Adding premium SideFry™ potato options to your menu.<br><br>
+            <b>Standard Only</b> – Selling only Super Crispy straight cut fries or
+            <b>Standard + SideFry™</b> – Adding premium SideFry™ potato options to your menu.<br><br>
             Adjust the parameters per product and immediately see how your monthly margin can increase.<br>
             Discover how simple menu choice leads to higher profit and more satisfied guests!
         </div>
