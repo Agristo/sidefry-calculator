@@ -1,22 +1,22 @@
 import streamlit as st
 
-# ---- CONFIG & BRANDING ----
+# LOGO-PICTOGRAM (gebruik best een PNG met transparantie voor mooi resultaat)
 st.set_page_config(page_title="SideFry™ Cost & Margin Calculator", layout="wide")
 
 AGRISTO_YELLOW = "#FFC20F"
 AGRISTO_BLACK = "#000000"
 BAG_WEIGHT = 2500  # grams
 
-# ---- LOGO ----
+# LOGO bovenaan, mooi gecentreerd
 st.markdown(
     """
     <div style="display:flex; justify-content:center; align-items:center; margin-bottom:8px;">
-        <img src="https://jobs.agristo.com/storage/attachments/9ef6eba7-7f0f-40d3-8493-bc07ac70ce56/agristo-logo-bya-forwhitebg-full-color-rgb-900px-w-72ppi.jpg" width="340">
+        <img src="https://files.oaiusercontent.com/file-6R2hPHwgkM7zL5g1pJVoiR?se=2024-05-21T21%3A24%3A27Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image&skoid=637b31d0-0e40-4837-a7fa-95f2a08b6a45&sktid=6e2558bb-0b9e-4f8d-abe7-4b327d40f7a4&skt=2024-05-21T21%3A03%3A12Z&ske=2024-05-22T21%3A03%3A12Z&sks=b&skv=2021-08-06&sig=wHoZlwF%2FYPrF65y%2B9RQyrZelEwBOFr3Z9E6vJycXKiA%3D" width="340">
     </div>
     """, unsafe_allow_html=True,
 )
 
-# ---- CUSTOM CSS ----
+# Sterkere CSS om alle rode highlights (outline, shadow) te forceren naar geel!
 st.markdown(f"""
     <style>
         button[aria-label="Increment"], button[aria-label="Decrement"] {{
@@ -44,7 +44,6 @@ st.markdown(f"""
     </style>
 """, unsafe_allow_html=True)
 
-# ---- PRODUCT INPUT FUNCTIE ----
 def product_input(product, defaults, key_suffix=""):
     st.markdown(f"<h4 style='margin-bottom:0px; margin-top:24px; color:{AGRISTO_BLACK};'>{product}</h4>", unsafe_allow_html=True)
     cols = st.columns([1.2, 1.2, 1.4, 1, 1.1])
@@ -77,7 +76,7 @@ def product_input(product, defaults, key_suffix=""):
 
     return margin_month
 
-# ---- DEFAULTS ----
+# Defaults
 default_standard = {"portion_weight": 200, "cost_bag": 6.25, "selling_price": 5.00, "bags_month": 10}
 default_standard_plus = {"portion_weight": 200, "cost_bag": 6.25, "selling_price": 5.00, "bags_month": 8}
 sidefry_products = [
@@ -89,13 +88,12 @@ sidefry_products = [
     {"name": "SmartChef mashed potatoes",             "defaults": {"portion_weight": 160, "cost_bag": 5.79, "selling_price": 6.00, "bags_month": 0}},
 ]
 
-# ---- TITEL ----
 st.markdown(
     f"<h1 style='color:{AGRISTO_BLACK};font-family:sans-serif;'>SideFry™ Interactive Cost & Margin Calculator</h1>",
     unsafe_allow_html=True
 )
 
-# ---- SECTION 1: STANDARD ONLY ----
+# Section 1: Standard Only
 st.markdown(
     f"<div style='background-color:#F7F7F7; border-radius:14px; padding:28px 18px 8px 18px; border: 2px solid {AGRISTO_YELLOW}; margin-bottom:18px;'>"
     f"<h2 style='color:{AGRISTO_BLACK};margin-top:0;'>1. Standard Only</h2>"
@@ -105,7 +103,7 @@ st.markdown(
 standard_margin = product_input("Super Crispy straight cut fries", default_standard, key_suffix="_std")
 st.markdown("</div>", unsafe_allow_html=True)
 
-# ---- SECTION 2: STANDARD + SIDEFRY™ ----
+# Section 2: Standard + SideFry
 st.markdown(
     f"<div style='background-color:#F7F7F7; border-radius:14px; padding:28px 18px 8px 18px; border: 2px solid {AGRISTO_YELLOW}; margin-bottom:18px;'>"
     f"<h2 style='color:{AGRISTO_BLACK};margin-top:0;'>2. Standard + SideFry™</h2>"
@@ -120,7 +118,7 @@ for prod in sidefry_products:
 
 st.markdown("</div>", unsafe_allow_html=True)
 
-# ---- VERGELIJKING ----
+# Comparison block
 st.markdown("---")
 st.subheader("Comparison: Standard Only vs. Standard + SideFry™")
 col1, col2, col3 = st.columns(3)
@@ -139,42 +137,4 @@ col3.markdown(
     f"<div style='background-color:{AGRISTO_BLACK}; color:{AGRISTO_YELLOW}; padding:16px; border-radius:10px; text-align:center; font-size:19px; font-weight:bold;'>"
     f"EXTRA margin<br>€{extra_margin:,.2f}/month</div>",
     unsafe_allow_html=True,
-)
-
-# ---- CTA ZONE (no download) ----
-st.markdown("---")
-st.markdown(
-    f"""
-    <div style='text-align:center; margin-top:20px;'>
-        <h2 style='color:{AGRISTO_BLACK}; font-size:1.3em;'>Ready to turn these numbers into real profit?<br>Let’s talk SideFry™!</h2>
-    </div>
-    """, unsafe_allow_html=True
-)
-
-cols = st.columns([2, 1, 2])
-with cols[1]:
-    mailto_link = "mailto:sales@agristo.com?subject=SideFry%20calculator%20results"
-    st.markdown(
-        f"""
-        <a href="{mailto_link}" target="_blank" style="
-            display:inline-block;
-            background-color:{AGRISTO_YELLOW};
-            color:{AGRISTO_BLACK};
-            font-weight:bold;
-            border:none;
-            padding:14px 38px;
-            border-radius:10px;
-            font-size:17px;
-            text-decoration:none;
-            margin:4px;">
-            Contact our sales team
-        </a>
-        """, unsafe_allow_html=True
-    )
-
-st.markdown(
-    f"<div style='text-align:center; margin-top:6px; color:{AGRISTO_BLACK}; font-size:1.01em;'>"
-    f"Want to see SideFry™ in your kitchen or have questions? Our team is ready to help!"
-    f"</div>",
-    unsafe_allow_html=True
 )
