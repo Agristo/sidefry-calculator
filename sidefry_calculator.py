@@ -23,7 +23,7 @@ st.markdown(
         <h1 style='color:{AGRISTO_BLACK}; font-family:sans-serif; font-size:2.2em; margin-bottom:0.3em;'>
             How much extra margin can SideFry™ bring you? Find out instantly!
         </h1>
-        <div style='color:{AGRISTO_BLACK}; font-size:1.12em; max-width:900px; margin:auto; margin-bottom:22px;'>
+        <div style='color:{AGRISTO_BLACK}; font-size:1.12em; max-width:1300px; margin:auto; margin-bottom:22px;'>
             Use this interactive tool to compare two business scenarios:<br>
             <b>Standard Only</b> – Selling only Super Crispy straight cut fries or
             <b>Standard + SideFry™</b> – Adding premium SideFry™ potato options to your menu.<br><br>
