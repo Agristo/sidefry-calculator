@@ -106,10 +106,7 @@ sidefry_products = [
     {"name": "SmartChef mashed potatoes",             "defaults": {"portion_weight": 160, "cost_bag": 5.79, "selling_price": 6.00, "bags_month": 0}},
 ]
 
-st.markdown(
-    f"<h1 style='color:{AGRISTO_BLACK};font-family:sans-serif;'>SideFry™ Interactive Cost & Margin Calculator</h1>",
-    unsafe_allow_html=True
-)
+
 
 # Section 1: Standard Only
 st.markdown(
