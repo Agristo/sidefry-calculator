@@ -138,3 +138,40 @@ col3.markdown(
     f"EXTRA margin<br>€{extra_margin:,.2f}/month</div>",
     unsafe_allow_html=True,
 )
+# --- CTA ZONE ---
+st.markdown("---")
+st.markdown(
+    f"""
+    <div style='text-align:center; margin-top:20px;'>
+        <h2 style='color:{AGRISTO_BLACK}; font-size:1.3em;'>Ready to turn these numbers into real profit?<br>Let’s talk SideFry™!</h2>
+    </div>
+    """, unsafe_allow_html=True
+)
+
+cols = st.columns([2, 1, 2])
+with cols[1]:
+    mailto_link = "mailto:sales@agristo.com?subject=SideFry%20calculator%20results"
+    st.markdown(
+        f"""
+        <a href="{mailto_link}" target="_blank" style="
+            display:inline-block;
+            background-color:{AGRISTO_YELLOW};
+            color:{AGRISTO_BLACK};
+            font-weight:bold;
+            border:none;
+            padding:14px 38px;
+            border-radius:10px;
+            font-size:17px;
+            text-decoration:none;
+            margin:4px;">
+            Contact our sales team
+        </a>
+        """, unsafe_allow_html=True
+    )
+
+st.markdown(
+    f"<div style='text-align:center; margin-top:6px; color:{AGRISTO_BLACK}; font-size:1.01em;'>"
+    f"Want to see SideFry™ in your kitchen or have questions? Our team is ready to help!"
+    f"</div>",
+    unsafe_allow_html=True
+)
