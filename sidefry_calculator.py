@@ -1,12 +1,22 @@
 import streamlit as st
 
+# LOGO-PICTOGRAM (gebruik best een PNG met transparantie voor mooi resultaat)
 st.set_page_config(page_title="SideFry™ Cost & Margin Calculator", layout="wide")
 
 AGRISTO_YELLOW = "#FFC20F"
 AGRISTO_BLACK = "#000000"
 BAG_WEIGHT = 2500  # grams
 
-# Custom CSS for yellow increment/decrement and bold expander hover
+# LOGO bovenaan, mooi gecentreerd
+st.markdown(
+    """
+    <div style="display:flex; justify-content:center; align-items:center; margin-bottom:8px;">
+        <img src="https://files.oaiusercontent.com/file-6R2hPHwgkM7zL5g1pJVoiR?se=2024-05-21T21%3A24%3A27Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image&skoid=637b31d0-0e40-4837-a7fa-95f2a08b6a45&sktid=6e2558bb-0b9e-4f8d-abe7-4b327d40f7a4&skt=2024-05-21T21%3A03%3A12Z&ske=2024-05-22T21%3A03%3A12Z&sks=b&skv=2021-08-06&sig=wHoZlwF%2FYPrF65y%2B9RQyrZelEwBOFr3Z9E6vJycXKiA%3D" width="340">
+    </div>
+    """, unsafe_allow_html=True,
+)
+
+# Sterkere CSS om alle rode highlights (outline, shadow) te forceren naar geel!
 st.markdown(f"""
     <style>
         button[aria-label="Increment"], button[aria-label="Decrement"] {{
@@ -17,6 +27,13 @@ st.markdown(f"""
             background-color: {AGRISTO_YELLOW} !important;
             color: {AGRISTO_BLACK} !important;
         }}
+        /* Force every focused or hovered element border (inputs) to yellow */
+        input:focus, input:active, .stNumberInput input:focus, .stNumberInput input:active, textarea:focus, textarea:active {{
+            outline: 2px solid {AGRISTO_YELLOW} !important;
+            border: 2px solid {AGRISTO_YELLOW} !important;
+            box-shadow: 0 0 4px 2px {AGRISTO_YELLOW} !important;
+        }}
+        /* Expander bold on hover */
         details summary:hover {{
             font-weight: bold !important;
             color: inherit !important;
@@ -63,7 +80,7 @@ def product_input(product, defaults, key_suffix=""):
 default_standard = {"portion_weight": 200, "cost_bag": 6.25, "selling_price": 5.00, "bags_month": 10}
 default_standard_plus = {"portion_weight": 200, "cost_bag": 6.25, "selling_price": 5.00, "bags_month": 8}
 sidefry_products = [
-    {"name": "Super Crispy SIDEWINDERS fries",        "defaults": {"portion_weight": 120, "cost_bag": 8.21, "selling_price": 6.00, "bags_month": 2}},
+    {"name": "Super Crispy SIDEWINDERS™ fries",        "defaults": {"portion_weight": 120, "cost_bag": 8.21, "selling_price": 6.00, "bags_month": 2}},
     {"name": "Super Crispy seasoned waffle cut fries - skin on", "defaults": {"portion_weight": 160, "cost_bag": 7.08, "selling_price": 6.00, "bags_month": 0}},
     {"name": "Super Crispy crinkle cut fries",        "defaults": {"portion_weight": 190, "cost_bag": 7.00, "selling_price": 6.00, "bags_month": 0}},
     {"name": "Crispy dippers",                        "defaults": {"portion_weight": 150, "cost_bag": 5.55, "selling_price": 6.00, "bags_month": 1}},
@@ -89,13 +106,13 @@ st.markdown("</div>", unsafe_allow_html=True)
 # Section 2: Standard + SideFry
 st.markdown(
     f"<div style='background-color:#F7F7F7; border-radius:14px; padding:28px 18px 8px 18px; border: 2px solid {AGRISTO_YELLOW}; margin-bottom:18px;'>"
-    f"<h2 style='color:{AGRISTO_BLACK};margin-top:0;'>2. Standard + SideFry</h2>"
-    f"<p style='color:{AGRISTO_BLACK};'>Super Crispy straight cut fries and extra SideFry options</p>",
+    f"<h2 style='color:{AGRISTO_BLACK};margin-top:0;'>2. Standard + SideFry™</h2>"
+    f"<p style='color:{AGRISTO_BLACK};'>Super Crispy straight cut fries and extra SideFry™ options</p>",
     unsafe_allow_html=True,
 )
 # First product: Super Crispy straight cut fries (8 bags/month)
 sidefry_total_margin = product_input("Super Crispy straight cut fries", default_standard_plus, key_suffix="_plus")
-# The rest: SideFry products, each with own subtitle/tussentitel
+# The rest: SideFry™ products, each met eigen tussentitel en TM waar nodig
 for prod in sidefry_products:
     sidefry_total_margin += product_input(prod["name"], prod["defaults"], key_suffix=f'_{prod["name"].replace(" ", "_")}')
 
@@ -103,7 +120,7 @@ st.markdown("</div>", unsafe_allow_html=True)
 
 # Comparison block
 st.markdown("---")
-st.subheader("Comparison: Standard Only vs. Standard + SideFry")
+st.subheader("Comparison: Standard Only vs. Standard + SideFry™")
 col1, col2, col3 = st.columns(3)
 col1.markdown(
     f"<div style='background-color:{AGRISTO_YELLOW}; color:{AGRISTO_BLACK}; padding:16px; border-radius:10px; text-align:center; font-size:19px; font-weight:bold;'>"
@@ -112,7 +129,7 @@ col1.markdown(
 )
 col2.markdown(
     f"<div style='background-color:{AGRISTO_YELLOW}; color:{AGRISTO_BLACK}; padding:16px; border-radius:10px; text-align:center; font-size:19px; font-weight:bold;'>"
-    f"Standard + SideFry<br>€{sidefry_total_margin:,.2f}/month</div>",
+    f"Standard + SideFry™<br>€{sidefry_total_margin:,.2f}/month</div>",
     unsafe_allow_html=True,
 )
 extra_margin = sidefry_total_margin - standard_margin
