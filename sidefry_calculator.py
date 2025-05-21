@@ -15,6 +15,23 @@ st.markdown(
     </div>
     """, unsafe_allow_html=True,
 )
+# --- Titel & Intro ---
+st.markdown(
+    f"""
+    <div style='text-align:center; margin-bottom: 0;'>
+        <h1 style='color:{AGRISTO_BLACK}; font-family:sans-serif; font-size:2.2em; margin-bottom:0.3em;'>
+            How much extra margin can SideFry™ bring you? Find out instantly!
+        </h1>
+        <div style='color:{AGRISTO_BLACK}; font-size:1.12em; max-width:660px; margin:auto; margin-bottom:22px;'>
+            Use this interactive tool to compare two business scenarios:<br>
+            <b>1. Standard Only</b> – Selling only Super Crispy straight cut fries.<br>
+            <b>2. Standard + SideFry™</b> – Adding premium SideFry™ potato options to your menu.<br><br>
+            Adjust the parameters per product and immediately see how your monthly margin can increase.<br>
+            Discover how simple menu choice leads to higher profit and more satisfied guests!
+        </div>
+    </div>
+    """, unsafe_allow_html=True
+)
 
 # Sterkere CSS om alle rode highlights (outline, shadow) te forceren naar geel!
 st.markdown(f"""
