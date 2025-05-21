@@ -11,7 +11,7 @@ BAG_WEIGHT = 2500  # grams
 st.markdown(
     """
     <div style="display:flex; justify-content:center; align-items:center; margin-bottom:8px;">
-        <img src="https://files.oaiusercontent.com/file-6R2hPHwgkM7zL5g1pJVoiR?se=2024-05-21T21%3A24%3A27Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image&skoid=637b31d0-0e40-4837-a7fa-95f2a08b6a45&sktid=6e2558bb-0b9e-4f8d-abe7-4b327d40f7a4&skt=2024-05-21T21%3A03%3A12Z&ske=2024-05-22T21%3A03%3A12Z&sks=b&skv=2021-08-06&sig=wHoZlwF%2FYPrF65y%2B9RQyrZelEwBOFr3Z9E6vJycXKiA%3D" width="340">
+        <img src="https://jobs.agristo.com/storage/attachments/9ef6eba7-7f0f-40d3-8493-bc07ac70ce56/agristo-logo-bya-forwhitebg-full-color-rgb-900px-w-72ppi.jpg" width="340">
     </div>
     """, unsafe_allow_html=True,
 )
