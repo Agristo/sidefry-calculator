@@ -1,21 +1,22 @@
 import streamlit as st
 
-# LOGO-PICTOGRAM (gebruik best een PNG met transparantie voor mooi resultaat)
+# --- BRANDING & CONFIG ---
 st.set_page_config(page_title="SideFry™ Cost & Margin Calculator", layout="wide")
 
 AGRISTO_YELLOW = "#FFC20F"
 AGRISTO_BLACK = "#000000"
 BAG_WEIGHT = 2500  # grams
 
-# LOGO bovenaan, mooi gecentreerd
+# --- LOGO (publieke URL, altijd zichtbaar & gecentreerd) ---
 st.markdown(
     """
-    <div style="display:flex; justify-content:center; align-items:center; margin-bottom:8px;">
+    <div style="display:flex; justify-content:center; align-items:center; margin-bottom:10px;">
         <img src="https://jobs.agristo.com/storage/attachments/9ef6eba7-7f0f-40d3-8493-bc07ac70ce56/agristo-logo-bya-forwhitebg-full-color-rgb-900px-w-72ppi.jpg" width="340">
     </div>
     """, unsafe_allow_html=True,
 )
-# --- Titel & Intro ---
+
+# --- TITEL & INTRO (gecentreerd, pakkend, duidelijk) ---
 st.markdown(
     f"""
     <div style='text-align:center; margin-bottom: 0;'>
