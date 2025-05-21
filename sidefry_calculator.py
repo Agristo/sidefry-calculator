@@ -6,10 +6,9 @@ AGRISTO_YELLOW = "#FFC20F"
 AGRISTO_BLACK = "#000000"
 BAG_WEIGHT = 2500  # grams
 
-# Inject custom CSS for yellow increment/decrement buttons and bold hover for expander
+# Custom CSS for yellow increment/decrement and bold expander hover
 st.markdown(f"""
     <style>
-        /* Make increment/decrement buttons yellow on hover */
         button[aria-label="Increment"], button[aria-label="Decrement"] {{
             border-radius: 8px !important;
         }}
@@ -18,14 +17,18 @@ st.markdown(f"""
             background-color: {AGRISTO_YELLOW} !important;
             color: {AGRISTO_BLACK} !important;
         }}
-        /* Bold on hover for expander header */
         details summary:hover {{
             font-weight: bold !important;
+            color: inherit !important;
+        }}
+        details summary {{
+            font-size: 1.03em !important;
         }}
     </style>
 """, unsafe_allow_html=True)
 
 def product_input(product, defaults, key_suffix=""):
+    st.markdown(f"<h4 style='margin-bottom:0px; margin-top:24px; color:{AGRISTO_BLACK};'>{product}</h4>", unsafe_allow_html=True)
     cols = st.columns([1.2, 1.2, 1.4, 1, 1.1])
     portion_weight = cols[0].number_input("Weight per portion (g)", min_value=50, max_value=500, value=defaults["portion_weight"], step=10, key=f"weight_{product}{key_suffix}")
     cost_bag = cols[1].number_input("Cost per bag (€)", min_value=1.0, max_value=20.0, value=float(defaults["cost_bag"]), step=0.01, key=f"cost_{product}{key_suffix}")
@@ -38,7 +41,6 @@ def product_input(product, defaults, key_suffix=""):
     margin_per_bag = margin_per_portion * portions_per_bag
     margin_month = margin_per_bag * bags_month
 
-    # Clean yellow badge (no border)
     badge_html = f"""
     <div style="background-color:{AGRISTO_YELLOW}; color:{AGRISTO_BLACK};
         padding:13px 5px; border-radius:10px; text-align:center;
@@ -48,7 +50,6 @@ def product_input(product, defaults, key_suffix=""):
     """
     cols[4].markdown(badge_html, unsafe_allow_html=True)
 
-    # Details expander
     with st.expander("Show full breakdown"):
         st.write(f"• Portions per bag: **{portions_per_bag:.2f}**")
         st.write(f"• Foodcost per portion: **€{foodcost_per_portion:.3f}**")
@@ -79,7 +80,7 @@ st.markdown(
 st.markdown(
     f"<div style='background-color:#F7F7F7; border-radius:14px; padding:28px 18px 8px 18px; border: 2px solid {AGRISTO_YELLOW}; margin-bottom:18px;'>"
     f"<h2 style='color:{AGRISTO_BLACK};margin-top:0;'>1. Standard Only</h2>"
-    f"<p style='color:{AGRISTO_BLACK};'>Only <b>Super Crispy straight cut fries</b></p>",
+    f"<p style='color:{AGRISTO_BLACK};'>Super Crispy straight cut fries</p>",
     unsafe_allow_html=True,
 )
 standard_margin = product_input("Super Crispy straight cut fries", default_standard, key_suffix="_std")
@@ -89,12 +90,12 @@ st.markdown("</div>", unsafe_allow_html=True)
 st.markdown(
     f"<div style='background-color:#F7F7F7; border-radius:14px; padding:28px 18px 8px 18px; border: 2px solid {AGRISTO_YELLOW}; margin-bottom:18px;'>"
     f"<h2 style='color:{AGRISTO_BLACK};margin-top:0;'>2. Standard + SideFry</h2>"
-    f"<p style='color:{AGRISTO_BLACK};'>Super Crispy straight cut fries <i>(with 8 bags/month)</i> <br>plus extra SideFry options</p>",
+    f"<p style='color:{AGRISTO_BLACK};'>Super Crispy straight cut fries and extra SideFry options</p>",
     unsafe_allow_html=True,
 )
 # First product: Super Crispy straight cut fries (8 bags/month)
 sidefry_total_margin = product_input("Super Crispy straight cut fries", default_standard_plus, key_suffix="_plus")
-# The rest: SideFry products
+# The rest: SideFry products, each with own subtitle/tussentitel
 for prod in sidefry_products:
     sidefry_total_margin += product_input(prod["name"], prod["defaults"], key_suffix=f'_{prod["name"].replace(" ", "_")}')
 
